@@ -1,3 +1,13 @@
+function showSubChoices() {
+    const select = document.getElementById('conversion-select');
+    const subChoiceDiv = document.getElementById('sub-choice');
+    if (select.value === '16') {
+        subChoiceDiv.style.display = 'block';
+    } else {
+        subChoiceDiv.style.display = 'none';
+    }
+}
+
 function convert() {
     const select = document.getElementById('conversion-select');
     const inputValue = parseFloat(document.getElementById('input-value').value);
@@ -51,7 +61,24 @@ function convert() {
             result = `${inputValue} Stokes = ${inputValue * 100} centistokes`;
             break;
         case 16:
-            result = `${inputValue} Celsius = ${(inputValue * 9/5) + 32} Fahrenheit`;
+            const subSelect = document.getElementById('sub-choice-select');
+            switch (parseInt(subSelect.value)) {
+                case 1:
+                    result = `${inputValue} Celsius = ${(inputValue * 9/5) + 32} Fahrenheit`;
+                    break;
+                case 2:
+                    result = `${inputValue} Fahrenheit = ${(inputValue - 32) * 5/9} Celsius`;
+                    break;
+                case 3:
+                    result = `${inputValue} Celsius = ${inputValue + 273.15} Kelvin`;
+                    break;
+                case 4:
+                    result = `${inputValue} Kelvin = ${inputValue - 273.15} Celsius`;
+                    break;
+                default:
+                    result = 'Invalid temperature conversion selection.';
+                    break;
+            }
             break;
         default:
             result = 'Invalid selection. Please try again.';
