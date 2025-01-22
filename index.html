@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Unit Conversion Tool</h1>
-        <select id="conversion-select">
+        <select id="conversion-select" onchange="showSubChoices()">
             <option value="1">Multiples and Submultiples of SI Units</option>
             <option value="2">Length Units</option>
             <option value="3">Area Units</option>
@@ -27,6 +27,14 @@
             <option value="15">Kinematic Viscosity Units</option>
             <option value="16">Temperature Conversion Formulas</option>
         </select>
+        <div id="sub-choice" style="display: none;">
+            <select id="sub-choice-select">
+                <option value="1">Celsius to Fahrenheit</option>
+                <option value="2">Fahrenheit to Celsius</option>
+                <option value="3">Celsius to Kelvin</option>
+                <option value="4">Kelvin to Celsius</option>
+            </select>
+        </div>
         <input type="number" id="input-value" placeholder="Enter value">
         <button onclick="convert()">Convert</button>
         <p id="result"></p>
